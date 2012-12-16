@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xunit lang='vbnet' comment="'" ext='.vb' optext='.vb' filenaming='uppercase' naming='camel'>
+  <version>
+for NUnit V2.0(VB.net)
+  </version>
+  <reference>
+Assertion.Fail([string message])
+
+Assertion.Assert([string message,] bool condition)
+
+Assertion.AssertEquals([string message,] expected, actual)
+  (comparable type: double, float, int, string)
+Assertion.AssertEquals(string message, expected, actual)
+Assertion.AssertNotEquals(string message, Object expected, Object actual)
+
+Assertion.AssertNotNull([string message,] Object anObject)
+Assertion.AssertNull([string message,] Object anObject)
+
+Assertion.AssertSame([string message,] Object expected, Object actual)
+Assertion.AssertNotSame(string message, Object expected, Object actual)
+  </reference>
+  <skeleton>
+Option Explicit On
+Imports NUnit.Framework
+Imports NUnit.Core
+<include template='Imports $(file)'/>
+
+<class template='&lt;TestFixture()&gt; Public Class $(skeleton)'/>
+  Public Sub New()
+    MyBase.New()
+  End Sub
+
+<usercode>
+  ' your stuff...
+  &lt;SetUp()&gt; Public Sub setUp()
+    ' initialize
+  End Sub
+  &lt;TearDown()&gt; Public Sub tearDown()
+    ' terminate
+  End Sub
+</usercode>
+<method template='  &lt;Test()&gt; Public Sub $(methodname)()'>
+    Assertion.Fail(&quot;not implement yet&quot;)
+  End Sub
+</method>
+<suite prefix='on'>
+</suite>
+<suite prefix='off'>
+</suite>
+End Class
+  </skeleton>
+  <main>
+  </main>
+</xunit>
+

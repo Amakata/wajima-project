@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xunit lang='ruby' comment='#' ext='.rb' optext='.rb' filenaming='downcase' naming='snake'>
+  <version>
+for Test::Unit-0.1.4
+  </version>
+  <reference>
+flunk(message)
+assert(boolean, message)
+assert_block(message)
+assert_equal(expected, actual, message)
+assert_not_equal(expected, actual, message)
+assert_raises(expected_exception_klass, message)
+assert_nothing_raised(*args)
+assert_throws(expected_symbol, message)
+assert_nothing_throws(message)
+assert_instance_of(klass, object, message)
+assert_nil(object, message)
+assert_not_nil(object, message)
+assert_kind_of(klass, object, message)
+assert_respond_to(object, method, message)
+assert_match(regexp, string, message)
+assert_does_not_match(regexp, string, message)
+assert_same(expected, actual, message)
+assert_not_same(expected, actual, message)
+assert_operator(object1, operator, object2, message)
+assert_in_delta(expected_float, actual_float, delta, message)
+assert_send(send_array, message)
+  </reference>
+  <skeleton>
+require 'test/unit'
+<include template="require '$(file)'"/>
+
+<class template='class $(skeleton) &lt; Test::Unit::TestCase'/>
+<usercode>
+  def set_up
+    # initialize
+  end
+  
+  def tear_down
+    # terminate
+  end
+</usercode>
+<method template='  def $(methodname)'>
+    flunk('not implement yet')
+  end
+</method>
+<suite prefix='on'></suite>
+<suite prefix='off'>
+  def $(skeleton).suite
+    suite = Test::Unit::TestSuite.new
+<suitemethod  template='    suite.add $(skeleton).new(&quot;$(methodname)&quot;)'/>
+    return suite
+  end
+</suite>
+  if $global_testsuite_registry
+    $global_testsuite_registry.add $(skeleton).suite
+  end
+end
+  </skeleton>
+  <main>
+require 'getoptlong'
+require 'test/unit/testsuite'
+
+parser = GetoptLong.new
+parser.set_options(
+  ['--help', '-h', GetoptLong::NO_ARGUMENT],
+  ['--console', '-c', GetoptLong::NO_ARGUMENT],
+  ['--gtk', '-g', GetoptLong::NO_ARGUMENT],
+  ['--fox', '-f', GetoptLong::NO_ARGUMENT]
+  )
+begin
+  parser.each_option do | name, arg |
+    eval &quot;$OPT_&quot; + name.sub(/^--/,'').gsub(/-/,'_').upcase + &quot;= '&quot; + arg + &quot;'&quot;
+  end
+rescue
+  exit(1)
+end
+
+if $OPT_HELP then
+  print &lt;&lt;&quot;EOB&quot;
+--help,    -h           : display help
+--console, -c           : Test TestRunner(default)
+--fox,     -f           : FOX TestRunner
+--gtk,     -g           : GTK TestRunner
+EOB
+  exit(0)
+end
+
+$global_testsuite_registry = Test::Unit::TestSuite.new
+
+unless ARGV.empty?
+  ARGV.each do |testcase|
+    require testcase
+  end
+else
+  Dir.glob(&quot;test*.rb&quot;).each do |testcase|
+    require testcase
+  end
+end
+
+if $OPT_GTK
+  require 'test/unit/ui/gtk/testrunner'
+  Test::Unit::UI::GTK::TestRunner.run $global_testsuite_registry
+elsif $OPT_FOX
+  require 'test/unit/ui/fox/testrunner'
+  Test::Unit::UI::Fox::TestRunner.run $global_testsuite_registry
+else
+  require 'test/unit/ui/console/testrunner'
+  Test::Unit::UI::Console::TestRunner.run $global_testsuite_registry
+end
+  </main>
+</xunit>
+

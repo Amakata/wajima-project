@@ -1,0 +1,61 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PSSSystem", "PSSSystem.vcproj", "{15C34275-36ED-4C55-96E8-B326C035FE20}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "zlib.vcproj", "{5BF99EB1-35F7-4E25-A00B-7CC6E2DC39D8}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpng", "libpng.vcproj", "{D3CFCF43-4C42-4103-A802-E98CD1614FDC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cppunit", "cppunit.vcproj", "{9A009F7F-298A-4C16-BFCC-713B12C47EEE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "lua.vcproj", "{462E330F-96D6-4BB0-AD81-A4BA70B8509E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tolua", "tolua.vcproj", "{AECED691-8847-4205-98EE-674EBC3A0100}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{15C34275-36ED-4C55-96E8-B326C035FE20}.Debug.ActiveCfg = Debug|Win32
+		{15C34275-36ED-4C55-96E8-B326C035FE20}.Debug.Build.0 = Debug|Win32
+		{15C34275-36ED-4C55-96E8-B326C035FE20}.Release.ActiveCfg = Release|Win32
+		{15C34275-36ED-4C55-96E8-B326C035FE20}.Release.Build.0 = Release|Win32
+		{5BF99EB1-35F7-4E25-A00B-7CC6E2DC39D8}.Debug.ActiveCfg = Debug|Win32
+		{5BF99EB1-35F7-4E25-A00B-7CC6E2DC39D8}.Debug.Build.0 = Debug|Win32
+		{5BF99EB1-35F7-4E25-A00B-7CC6E2DC39D8}.Release.ActiveCfg = Release|Win32
+		{5BF99EB1-35F7-4E25-A00B-7CC6E2DC39D8}.Release.Build.0 = Release|Win32
+		{D3CFCF43-4C42-4103-A802-E98CD1614FDC}.Debug.ActiveCfg = Debug|Win32
+		{D3CFCF43-4C42-4103-A802-E98CD1614FDC}.Debug.Build.0 = Debug|Win32
+		{D3CFCF43-4C42-4103-A802-E98CD1614FDC}.Release.ActiveCfg = Release|Win32
+		{D3CFCF43-4C42-4103-A802-E98CD1614FDC}.Release.Build.0 = Release|Win32
+		{9A009F7F-298A-4C16-BFCC-713B12C47EEE}.Debug.ActiveCfg = Debug|Win32
+		{9A009F7F-298A-4C16-BFCC-713B12C47EEE}.Debug.Build.0 = Debug|Win32
+		{9A009F7F-298A-4C16-BFCC-713B12C47EEE}.Release.ActiveCfg = Release|Win32
+		{9A009F7F-298A-4C16-BFCC-713B12C47EEE}.Release.Build.0 = Release|Win32
+		{462E330F-96D6-4BB0-AD81-A4BA70B8509E}.Debug.ActiveCfg = Debug|Win32
+		{462E330F-96D6-4BB0-AD81-A4BA70B8509E}.Debug.Build.0 = Debug|Win32
+		{462E330F-96D6-4BB0-AD81-A4BA70B8509E}.Release.ActiveCfg = Release|Win32
+		{462E330F-96D6-4BB0-AD81-A4BA70B8509E}.Release.Build.0 = Release|Win32
+		{AECED691-8847-4205-98EE-674EBC3A0100}.Debug.ActiveCfg = Debug|Win32
+		{AECED691-8847-4205-98EE-674EBC3A0100}.Debug.Build.0 = Debug|Win32
+		{AECED691-8847-4205-98EE-674EBC3A0100}.Release.ActiveCfg = Release|Win32
+		{AECED691-8847-4205-98EE-674EBC3A0100}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

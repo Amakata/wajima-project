@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xunit lang='java' comment='//' ext='.java' optext='.java' filenaming='uppercase' naming='camel'>
+  <version>
+for JUnit 3.7
+  </version>
+  <reference>
+assertEquals(java.lang.String message, expected, actual)
+   (argument type:boolean, byte char, double, float, int, long ,java.lang.Object)
+
+assertNotNull(object)
+assertNotNull(java.lang.String message, object)
+assertNull(object)
+assertNull(java.lang.String message, object)
+assertSame(expected, actual)
+assertSame(java.lang.String message, expected, actual)
+   (argument type:java.lang.Object)
+
+assert(condition)
+assert(java.lang.String message, condition)
+assertTrue(condition)
+assertTrue(java.lang.String message, condition)
+   (argument type:boolean)
+
+fail()
+fail(java.lang.String message)
+  </reference>
+  <skeleton>
+import junit.framework.*;
+<include template='import $(file);'/>
+
+<class template='public class $(skeleton) extends TestCase {'/>
+<usercode>
+  public $(skeleton)(String name) {
+    super(name);
+  }
+  //your stuff...
+  protected void setUp() {
+    // initialize
+  }
+  protected void tearDown() {
+    // terminate
+  }
+</usercode>
+<method template='  public void $(methodname)() {'>
+    fail(&quot;not implement yet&quot;);
+  }
+</method>
+<suite prefix='on'>
+</suite>
+<suite prefix='off'>
+  public static Test suite() {
+    TestSuite suite = new TestSuite();
+<suitemethod  template='    suite.addTest(new $(skeleton)(&quot;$(methodname)&quot;));'/>
+    return suite;
+  }
+</suite>
+  public static void main(String args[]) {
+    if ( args.length > 0 ) {
+      if ( args[0].charAt(0) == 's' ) {
+        junit.swingui.TestRunner.run($(skeleton).class);
+      } else if ( args[0].charAt(0) == 'a' ) {
+        junit.awtui.TestRunner.run($(skeleton).class);
+      } else {
+        junit.textui.TestRunner.run($(skeleton).class);
+      }
+    } else {
+      junit.textui.TestRunner.run($(skeleton).class);
+    }
+  }
+}
+  </skeleton>
+  <main>
+  </main>
+</xunit>
+

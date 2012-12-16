@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xunit lang='cpp' comment='//' ext='.cpp' optext='.cpp' filenaming='uppercase' naming='snake'>
+  <version>
+for CppUnit 1.9.8
+  </version>
+  <reference>
+CPPUNIT_ASSERT(condition) 
+CPPUNIT_ASSERT_MESSAGE(message, condition) 
+CPPUNIT_FAIL(message) 
+CPPUNIT_ASSERT_EQUAL(expected, actual) 
+CPPUNIT_ASSERT_EQUAL_MESSAGE(message, expected, actual) 
+CPPUNIT_ASSERT_DOUBLES_EQUAL(expected, actual, delta) 
+  </reference>
+  <skeleton>
+#include &lt;cppunit/extensions/HelperMacros.h&gt;
+#include &lt;cppunit/TestAssert.h&gt;
+<include template='#include "$(file)"'/>
+
+<class template='class $(skeleton) : public CppUnit::TestFixture {'/>
+<usercode>
+private:
+  // your staff
+public:
+  virtual void setUp() {
+    // initialize
+  }
+  virtual void tearDown() {
+    // terminate
+  }
+</usercode>
+<method template='  void $(methodname)() {'>
+    CPPUNIT_FAIL("no implementation");
+  }
+</method>
+<suite prefix='on'>
+  CPPUNIT_TEST_SUITE($(skeleton));
+<suitemethod  template='  CPPUNIT_TEST($(methodname));'/>
+  CPPUNIT_TEST_SUITE_END();
+</suite>
+<suite prefix='off'>
+  CPPUNIT_TEST_SUITE($(skeleton));
+<suitemethod  template='  CPPUNIT_TEST($(methodname));'/>
+  CPPUNIT_TEST_SUITE_END();
+</suite>
+};
+CPPUNIT_TEST_SUITE_REGISTRATION($(skeleton));
+  </skeleton>
+  <main>
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;cppunit/ui/text/TestRunner.h&gt;
+#include &lt;cppunit/XmlOutputter.h&gt;
+#include &lt;cppunit/TextOutputter.h&gt;
+#include &lt;cppunit/CompilerOutputter.h&gt;
+#include &lt;cppunit/extensions/TestFactoryRegistry.h&gt;
+
+int main(int argc, char* argv[]) {
+  int format = 0;
+  int target = 0;
+  std::string xsl;
+  std::string ns;
+  for ( int i = 1; i &lt; argc; ++i ) {
+    std::string arg(argv[i]);
+    if ( arg == &quot;--text&quot;      ) format = 0;
+    if ( arg == &quot;--xml&quot;       ) format = 1;
+    if ( arg == &quot;--compiler&quot;  ) format = 2;
+    if ( arg == &quot;--cerr&quot;      ) target = 1;
+    if ( arg == &quot;--xsl&quot;       ) xsl = argv[++i];
+    if ( arg == &quot;--namespace&quot; ) ns  = argv[++i];
+  }
+  CppUnit::TextUi::TestRunner runner;
+  if ( ns.empty() )
+    runner.addTest(CppUnit::TestFactoryRegistry::getRegistry().makeTest());
+  else
+    runner.addTest(CppUnit::TestFactoryRegistry::getRegistry(ns).makeTest());
+  CppUnit::Outputter* outputter = 0;
+  std::ostream* stream = target ? &amp;std::cerr : &amp;std::cout;
+  switch ( format ) {
+  case 0 :
+    outputter = new CppUnit::TextOutputter(&amp;runner.result(),*stream);
+    break;
+  case 1 :
+    outputter = new CppUnit::XmlOutputter(&amp;runner.result(),*stream, &quot;shift_jis&quot;);
+    static_cast&lt;CppUnit::XmlOutputter*>(outputter)->setStyleSheet(xsl);
+    break;
+  case 2 :
+    outputter = new CppUnit::CompilerOutputter(&amp;runner.result(),*stream);
+    break;
+  }
+  runner.setOutputter(outputter);
+  return runner.run() ? 0 : 1;
+}
+  </main>
+</xunit>
+

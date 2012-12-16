@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ascii" standalone="yes"?>
+<xunit lang='tcl' comment='#' ext='.tcl' optext='.tcl' filenaming='uppercase' naming='camel'>
+  <version>
+for TclTkUnit 1.1.2
+  </version>
+  <reference>
+errorMess {message}
+error {}
+assertTrueMess {message condition}
+assertTrue {condition}
+assertFalseMess {message condition}
+assertFalse {condition}
+assertEqualsMess {message expected actual}
+assertEquals {expected actual}
+assertEqualsStringMess {message expected actual}
+assertEqualsString {expected actual}
+errorNotEqualsMess {message expected actual}
+errorNotEquals {expected actual}
+errorNotEqualsStringMess {message expected actual}
+errorNotEqualsString {expected actual}
+  </reference>
+  <skeleton>#!/usr/local/bin/tclsh
+source &quot;../lib/TclTkUnit.tcl&quot;
+<include template='source &quot;$(file)&quot;'/>
+
+<class template='namespace eval $(skeleton) {'/>
+<usercode>
+    proc setUp {} {
+        # initialize
+    }
+    proc tearDown {} {
+        # terminate
+    }
+</usercode>
+<method template='    proc $(methodname) {} {'>
+        Test::errorMess &quot;not implement yet&quot;
+    }
+</method>
+<suite prefix='on'>
+</suite>
+<suite prefix='off'>
+</suite>
+}
+
+TestRunner::run [TestCase::create &quot;$(skeleton)&quot;]
+#
+</skeleton>
+<main>#!/usr/local/bin/tclsh
+source &quot;../lib/TclTkUnit.tcl&quot;
+TestRunner::store
+
+#source "your making testing file.tcl"
+
+TestRunner::start</main>
+</xunit>

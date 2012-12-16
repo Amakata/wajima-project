@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xunit lang='csharp' comment='//' ext='.cs' optext='.cs' filenaming='uppercase' naming='camel'>
+  <version>
+for NUnit V2.0(C#)
+  </version>
+  <reference>
+Assertion.Fail([string message])
+
+Assertion.Assert([string message,] bool condition)
+
+Assertion.AssertEquals([string message,] expected, actual)
+  (comparable type: double, float, int, string)
+Assertion.AssertEquals(string message, expected, actual)
+Assertion.AssertNotEquals(string message, Object expected, Object actual)
+
+Assertion.AssertNotNull([string message,] Object anObject)
+Assertion.AssertNull([string message,] Object anObject)
+
+Assertion.AssertSame([string message,] Object expected, Object actual)
+Assertion.AssertNotSame(string message, Object expected, Object actual)
+  </reference>
+  <skeleton>
+using NUnit.Framework;
+using NUnit.Core;
+<include template='import $(file);'/>
+
+<class template='[TestFixture] public class $(skeleton) {'/>
+<usercode>
+
+  //your stuff...
+  [SetUp] public void setUp() {
+    // initialize
+  }
+  [TearDown] public void tearDown() {
+    // terminate
+  }
+</usercode>
+<method template='  [Test] public void $(methodname)() {'>
+    Assertion.Fail(&quot;not implement yet&quot;);
+  }
+</method>
+<suite prefix='on'>
+</suite>
+<suite prefix='off'>
+</suite>
+}
+  </skeleton>
+  <main>
+  </main>
+</xunit>
+

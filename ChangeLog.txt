@@ -1,0 +1,148 @@
+ChangeLog
+
+＊フォーマット
+
+*西暦/月/日 名前
+・変更点１
+・変更点２
+
+
+*2004/01/02 天方
+・Toluaパッケージを統合した。
+・Timerを追加した。
+
+*2003/12/30 天方
+・Toluaパッケージを追加した
+
+*2003/12/25 天方
+・Luaパッケージを追加した。
+・Luaの呼び出しを行った。
+
+*2003/12/03 天方
+・KeyInput MouseInputの修正を行った。
+
+*2003/11/19 天方
+・Graphics7.hのバグを修正した。
+
+*2003/11/18 天方
+・Graphics7.hを追加。
+・DirectDraw7を使ったバージョンのGraphicsDeviceを作成した。
+
+*2003/11/14 天方
+・エフェクトの最適化を行った。
+・最大FSPを測定できるように修正した。
+・Fontの修正を行った。
+
+*2003/11/13 天方
+・いくつかのメソッドをプロファイラのために非インライン化した。
+・Clearクラスの高速化を行った。
+
+*2003/11/08 天方
+・Textクラスの追加・文字列描画を行えるようにした。
+
+*2003/11/06 天方
+・Spriteの追加
+・Fontの追加
+・DIBBitmapの追加
+
+*2003/11/03 天方
+・CopyA(アルファ使用モード)を追加した
+
+*2003/11/03 天方
+・Pixel,GraphicsConverterにDX7用のピクセルフォーマットを追加した。また、A1R5G5B5を削除した。
+・Input系,Graphics系のデバイスロストに対応するようにした。
+・GraphicsConverterの描画範囲チェックを修正した。
+
+*2003/11/01 天方
+・DLLを必要ないバージョンに修正した。
+・明るさ1/2フィルタを作成した。
+
+*2003/11/01 天方
+・GraphicsConverterクラスを追加した。
+・Copy,Clear効果を追加した。
+・ウィンドウ表示サイズを修正した。
+・ウィンドウに枠を追加した。
+
+*2003/10/30 天方
+・Image,ImageFactory,Pixel,Color,Depthクラスを追加した。
+・GraphicsDeviceを修正した。
+・test.pngをスクリーンに表示するようにした。
+
+*2003/10/24 天方
+・WindowおよびGraphicsライブラリの修正を行った。
+・Timerのバグを修正した。
+
+*2003/10/15 天方
+・Input系の修正を行った。
+・Timerクラスを追加した。
+・Graphicsライブラリの途中を追加した。
+・zlib・libpngを追加した。
+
+*2003/10/11 天方
+・COMObjectのバグを修正した。
+
+*2003/10/08 天方
+・MouseInputを改良した。（これを使うぞ!）
+
+*2003/10/07 天方
+・DXErrorを削除し、DXAssert,DXExceptionを追加した。
+・ApplicationBasesの呼び出し位置を修正した。
+・KeyInputクラスを完成させた。
+・MouseInputクラスを完成させた。(でも、これは使わないかも。)
+
+*2003/10/06 天方
+・DXErrorの修正を行った。
+・デバッグ出力のSJIS対応を行った。
+
+*2003/10/04 天方
+・DXErrorを追加した。
+・COMObjectクラスを追加した。
+・Inputクラスを製作中。
+
+*2003/10/02 天方
+・ApplicationBase,ThreadLocal,OwnershipPolicyを修正した。
+
+*2003/10/01 天方
+・Windowの管理をApplicationBaseに移した。
+
+*2003/09/30 天方
+・Window,WindowOption,ApplicationBaseの役割を整理した。
+・アプリケーション固有の設定をPSSSystem.cppに移動した。
+
+*2003/09/29 天方
+・Lokiライブラリを最新版に修正した。
+・ThreadLocal,ThredingModel,OwnershipPolicyの修正を行った
+・Window,WindowOption,MessageListener,ApplicationBaseの修正を行った
+
+*2003/09/24 天方
+・Thread終了時にThreadLocalの内容が解放されるように修正した。
+・MessageListenerクラスを追加した。
+
+*2003/09/22 天方
+・名前空間の修正
+・ChangeLogを降順にした。
+
+*2003/09/21 天方
+・Releaseビルドの設定を追加した。
+・cppunit.libを追加した。
+・Threadクラスのバグを修正した。
+・ApplicationBaseクラスを追加した。
+・Windowクラスを変更した。
+
+*2003/09/20 天方
+・海亀を追加した。
+・ThreadLocalクラスを修正した。
+・Windowクラスを追加した。
+
+*2003/09/16　天方
+・zefiro_inputを追加した。
+・InputBaseクラスを追加した。
+・KeyInputクラスを追加した。
+・ApplicationInitializerクラスを追加した。
+・ThreadLocalクラスを追加した。
+・ThreadLocalTestクラスを追加した。
+
+
+*2003/09/15　天方
+・ChangeLogを追加した。
+・zefiro_stdとzefiro_systemのライブラリを追加した。

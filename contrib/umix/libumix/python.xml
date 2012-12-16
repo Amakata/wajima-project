@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xunit lang='python' comment='#' ext='.py' optext='.py' filenaming='downcase' naming='snake'>
+  <version>
+for PyUnit 1.4.1
+  </version>
+  <reference>
+fail(msg)
+failIf(expr, msg)
+failUnless(expr, msg)
+  = assert_
+failUnlessRaises(excClass, callableObj, *args, **kwargs)
+  = assertRaises
+failUnlessEqual(first, second, msg)
+  = assertEqual
+  = assertEquals
+failIfEqual(first, second, msg)
+  = assertNotEquals
+  = failIfEqual
+  </reference>
+  <skeleton>
+import unittest
+<include template='import $(file)'/>
+
+<class template='class $(skeleton)(unittest.TestCase):'/>
+<usercode>
+  def setUp(self):
+    # initialize
+    pass
+
+  def tearDown(self):
+    # terminate
+    pass
+
+</usercode>
+<method template='  def $(methodname)(self):'>
+    &quot;&quot;&quot; test description &quot;&quot;&quot;
+    self.fail('not implement yet')
+</method>
+<suite prefix='on'>
+def suite():
+  return unittest.makeSuite($(skeleton), 'test')
+</suite>
+<suite prefix='off'>
+def suite():
+  suite = unittest.TestSuite()
+<suitemethod  template='  suite.addTest($(skeleton)(&quot;$(methodname)&quot;))'/>
+  return suite
+</suite>
+if __name__ == '__main__':
+  runner = unittest.TextTestRunner()
+  runner.run(suite())
+  </skeleton>
+  <main>
+import unittest
+import sys
+import getopt
+from fnmatch import fnmatchcase
+from os import listdir
+
+AllTest = unittest.TestSuite()
+loader = unittest.TestLoader()
+verbosity = 2
+
+usage_msg = &quot;&quot;&quot;
+-h, --help     : show this message
+-v, --verbose  : verbose output
+-q, --quiet    : minimal output
+&quot;&quot;&quot;
+
+def usage(msg = None):
+  if msg: print msg
+  print usage_msg
+  sys.exit(2)
+
+try:
+  options, args = getopt.getopt(sys.argv[1:],
+                                'hHvq', ['help', 'verbose', 'quite'])
+  for opt, value in options:
+    if opt in ('-h', '-H', '--help'):
+      usage()
+    if opt in ('-q', '--quiet'):
+      verbosity = 0
+    if opt in ('-v', '--verbose'):
+      verbosity = 2
+  
+  if 0 == len(args):
+    files = listdir(&quot;.&quot;)
+    for file in files:
+      if fnmatchcase(file, &quot;test*.py&quot;):
+        args.append(file)
+  
+  for testcase in args:
+    try:
+      AllTest.addTest(__import__(testcase[0:-3]).suite())
+    except ImportError:
+      print 'test module not found'
+      sys.exit(2)
+  
+  runner = unittest.TextTestRunner(verbosity=verbosity)
+  result = runner.run(AllTest)
+  sys.exit(not result.wasSuccessful())
+
+except getopt.error, msg:
+  usage(msg)
+  </main>
+</xunit>
+

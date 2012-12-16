@@ -1,0 +1,9 @@
+
+$cfile "../std/Timer.h"
+$cfile "tolua_wdcon.h"
+$cfile "tolua_pumpMessage.h"
+$cfile "tolua_MouseInput.h"
+$cfile "tolua_KeyInput.h"
+$cfile "tolua_Graphics.h"
+
+

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xunit lang='cppx' comment='//' ext='.cpp' optext='.cppx' filenaming='uppercase' naming='snake'>
+  <version>
+for CppUnit-x-20020331
+  </version>
+  <reference>
+TEST_ASSERT(cond)
+TEST_ASSERT_MESSAGE(cond, msg)
+TEST_ASSERT_EQUALS(expected, actual)
+TEST_ASSERT_EQUALS_DOUBLE(expected, actual, delta)
+TEST_FAIL(msg)
+TEST_ERROR(msg)
+  </reference>
+  <skeleton>
+#include &lt;cppunit/TestCaller.h&gt;
+#include &lt;cppunit/TestSuite.h&gt;
+#include &lt;cppunit/TestCase.h&gt;
+<include template='#include &quot;$(file)&quot;'/>
+USING_NAMESPACE_CPPUNIT
+
+extern void add_test(Test* test);
+
+<class template='class $(skeleton) : public TestCase {'/>
+<usercode>
+ private:
+  // your stuff...
+ public:
+  explicit $(skeleton)(const char* name) : TestCase(name) {}
+  virtual void setUp() {
+    // initialize
+  }
+  virtual void tearDown() {
+    // terminate
+  }
+</usercode>
+<method template='  void $(methodname)() {'>
+    TEST_FAIL(&quot;no implementation&quot;);
+  }
+</method>
+<suite prefix='on'>
+  static Test* suite() {
+    TestSuite* suite = new TestSuite;
+<suitemethod  template='    suite-&gt;addTest(new TEST_CALLER($(skeleton), $(methodname)));'/>
+    return suite;
+  }
+</suite>
+<suite prefix='off'>
+  static Test* suite() {
+    TestSuite* suite = new TestSuite;
+<suitemethod  template='    suite-&gt;addTest(new TEST_CALLER($(skeleton), $(methodname)));'/>
+    return suite;
+  }
+</suite>
+  class Registrer {
+    public: Registrer() {
+      add_test($(skeleton)::suite());
+    }
+  };
+};
+static #{@skeleton}::Registrer registrer;
+  </skeleton>
+  <main>
+#include &lt;cppunit/SimpleList.h&gt;
+#include &lt;cppunit/TestSuite.h&gt;
+#include &lt;cppunit/TestRunner.h&gt;
+
+USING_NAMESPACE_CPPUNIT
+
+SimpleList&amp; registry() {
+  static SimpleList registry_;
+  return registry_;
+}
+
+void add_test(Test* test) {
+  registry().push_back(test);
+}
+
+TestSuite* get_test() {
+  SimpleList::iterator i;
+  TestSuite* suite = new TestSuite;
+  for(i=registry().begin();i!=registry().end();++i) {
+    suite->addTest(static_cast&lt;Test*&gt;(*i));
+    *i = 0;
+  }
+  return suite;
+}
+
+int main(int argc, char** argv) {
+  TestRunner runner;
+  runner.addTest(get_test());
+  return runner.run(argc, argv);
+}
+  </main>
+</xunit>

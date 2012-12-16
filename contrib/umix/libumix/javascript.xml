@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xunit lang='javascript' comment='//' ext='.html' optext='.html' filenaming='downcase' naming='snake'>
+  <version>
+for JsUnit 1.3.2
+  </version>
+  <reference>
+assert([comment], booleanValue)
+assertEquals([comment], value1, value2)
+assertNotEquals([comment], value1, value2)
+assertNull([comment], value)
+assertNotNull([comment], value)
+assertUndefined([comment], value)
+assertNotUndefined([comment], value)
+assertNaN([comment], value)
+assertNotNaN([comment], value)
+fail(comment)
+  </reference>
+  <skeleton>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;JsUnit Tests&lt;/title&gt;
+    &lt;link rel="stylesheet" type="text/css" href="jsUnitStyle.css"&gt;
+<include template='&lt;script language="JavaScript" type="text/javascript" src="$(file)"&gt;&lt;/script&gt;'/>
+&lt;script language="JavaScript" type="text/javascript" src="jsUnitCore.js"&gt;&lt;/script&gt;
+&lt;script language="JavaScript" type="text/javascript"&gt;
+
+<class template=''/>
+<usercode>
+function setUp() {
+    // initialize
+}
+
+function tearDown() {
+    // terminate
+}
+</usercode>
+<method template='function $(methodname)() {'>
+    fail('not implement yet')
+}
+</method>
+<suite prefix='on'>
+</suite>
+<suite prefix='off'>
+</suite>
+&lt;/script&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;h1&gt;JsUnit Tests&lt;/h1&gt;
+
+    &lt;p&gt;This page contains tests. To see them, take a look at the source.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </skeleton>
+  <main>
+  </main>
+</xunit>
+
